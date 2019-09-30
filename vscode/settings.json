@@ -1,0 +1,12 @@
+{
+    "editor.fontSize": 11,
+    "window.zoomLevel": -0.8,
+    "editor.multiCursorModifier": "alt",
+    "editor.snippetSuggestions": "top",
+    "editor.formatOnPaste": true,
+    "terminal.integrated.cursorBlinking": true,
+    "editor.minimap.enabled": false,
+    "clojureVSCode.autoStartNRepl": false,
+    "editor.renderWhitespace": "none",
+    "diffEditor.ignoreTrimWhitespace": false,
+}

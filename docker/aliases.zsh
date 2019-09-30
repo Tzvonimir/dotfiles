@@ -1,2 +1,5 @@
 alias d='docker $*'
 alias d-c='docker-compose $*'
+alias d-ps='docker ps -qa'
+alias d-stop='docker stop $(docker ps -qa)'
+alias d-rm='docker rm $(docker ps -qa)'

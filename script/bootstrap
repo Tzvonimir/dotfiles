@@ -5,6 +5,9 @@
 cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 
+# Copy .vim folder to home directory
+cp -R .vim ~/
+
 set -e
 
 echo ''

@@ -116,8 +116,47 @@ brew install tree
 brew install vbindiff
 brew install zopfli
 
+#brew install java
+brew tap homebrew/cask-versions
+brew tap adoptopenjdk/openjdk
+brew cask install adoptopenjdk8
+brew cask install adoptopenjdk11
+brew install jenv
+brew cask install eclipse-jee
+
+#brew install visual studio code
+brew cask install visual-studio-code
+
+#brew install sequal pro
+brew install mysql
+brew cask install sequel-pro
+
+#brew install pgadmin
+brew install postgresql
+brew install pgadmin4
+
+#brew install docker
+brew install docker
+brew install docker-compose
+brew install docker-machine
+brew install xhyve
+brew install docker-machine-driver-xhyve
+
+#brew install postman
+brew cask install postman
+
+#brew install android
+brew install ant
+brew install maven
+brew install gradle
+brew install android-sdk
+brew install android-ndk
+brew cask install android-studio
+
+#brew install google chrome
+brew cask install google-chrome
+
 # Remove outdated versions from the cellar.
 brew cleanup
-
 
 exit 0

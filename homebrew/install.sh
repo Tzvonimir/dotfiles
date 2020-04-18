@@ -157,6 +157,16 @@ brew cask install android-studio
 #brew install google chrome
 brew cask install google-chrome
 
+#brew install cmake
+brew install cmake
+
+#brew install vim
+brew install vim
+brew link vim
+
+#brew install ripgrep
+brew install ripgrep
+
 # Remove outdated versions from the cellar.
 brew cleanup
 

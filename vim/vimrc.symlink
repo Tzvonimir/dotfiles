@@ -24,7 +24,7 @@ set noeol
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 if exists("&undodir")
-	set undodir=~/.vim/undo
+  set undodir=~/.vim/undo
 endif
 
 " Don’t create backups when editing files in certain directories
@@ -85,6 +85,8 @@ set scrolloff=3
 set modifiable
 " Set leader
 let mapleader=" "
+" Tags - look in in index file
+set tags=tags
 
 " Highlight 80
 set colorcolumn=80
@@ -92,12 +94,12 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " Automatic commands
 if has("autocmd")
-	" Enable file type detection
-	filetype on
-	" Treat .json files as .js
-	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-	" Treat .md files as Markdown
-	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+  " Enable file type detection
+  filetype on
+  " Treat .json files as .js
+  autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+  " Treat .md files as Markdown
+  autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
 
 " Wrap gitcommit file types at the appropriate length
@@ -105,21 +107,21 @@ filetype indent plugin on
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.vim/plugged')
 
-  Plug 'vimwiki/vimwiki'
-  Plug 'morhetz/gruvbox'
-  Plug 'jremmen/vim-ripgrep'
-  Plug 'tpope/vim-fugitive'
-  Plug 'vim-utils/vim-man'
-  Plug 'lyuts/vim-rtags'
-  Plug 'kien/ctrlp.vim'
-  Plug 'Valloric/YouCompleteMe'
-  Plug 'mbbill/undotree'
+Plug 'vimwiki/vimwiki'
+Plug 'morhetz/gruvbox'
+Plug 'jremmen/vim-ripgrep'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-utils/vim-man'
+Plug 'lyuts/vim-rtags'
+Plug 'kien/ctrlp.vim'
+Plug 'Valloric/YouCompleteMe'
+Plug 'mbbill/undotree'
 
 call plug#end()
 
@@ -151,49 +153,59 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
-nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+nnoremap <leader>pc :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+nnoremap <leader>pv <bar> :Lex <bar> :vertical resize 30<CR>
 nnoremap <leader>v :wincmd v<CR>
 nnoremap <leader>n :wincmd n<CR>
-nnoremap <Leader>ps :Rg<SPACE>
+nnoremap <leader>ps :Rg<SPACE>
 nnoremap <silent> <Leader>= :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+nnoremap <leader>bn :bn<CR>
+nnoremap <leader>bp :bp<CR>
+
+fun! GoPHP()
+  nnoremap <leader>gd <C-]><CR>
+  nnoremap <leader>gdn :wincmd ]<CR>
+  nnoremap <leader>gr <C-T><CR>
+endfun
 
 fun! GoYCM()
-    nnoremap <buffer> <silent> <leader>gd :YcmCompleter GoTo<CR>
-    nnoremap <buffer> <silent> <leader>gr :YcmCompleter GoToReferences<CR>
-    nnoremap <buffer> <silent> <leader>rr :YcmCompleter RefactorRename<space>
+  nnoremap <buffer> <silent> <leader>gd :YcmCompleter GoTo<CR>
+  nnoremap <buffer> <silent> <leader>gr :YcmCompleter GoToReferences<CR>
+  nnoremap <buffer> <silent> <leader>rr :YcmCompleter RefactorRename<space>
 endfun
 
 function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 fun! GoCoc()
-    inoremap <buffer> <silent><expr> <TAB>
-                \ pumvisible() ? "\<C-n>" :
-                \ <SID>check_back_space() ? "\<TAB>" :
-                \ coc#refresh()
+  inoremap <buffer> <silent><expr> <TAB>
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ coc#refresh()
 
-    inoremap <buffer> <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-    inoremap <buffer> <silent><expr> <C-space> coc#refresh()
+  inoremap <buffer> <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  inoremap <buffer> <silent><expr> <C-space> coc#refresh()
 
-    " GoTo code navigation.
-    nmap <buffer> <leader>gd <Plug>(coc-definition)
-    nmap <buffer> <leader>gy <Plug>(coc-type-definition)
-    nmap <buffer> <leader>gi <Plug>(coc-implementation)
-    nmap <buffer> <leader>gr <Plug>(coc-references)
-    nnoremap <buffer> <leader>cr :CocRestart
+  " GoTo code navigation.
+  nmap <buffer> <leader>gd <Plug>(coc-definition)
+  nmap <buffer> <leader>gy <Plug>(coc-type-definition)
+  nmap <buffer> <leader>gi <Plug>(coc-implementation)
+  nmap <buffer> <leader>gr <Plug>(coc-references)
+  nnoremap <buffer> <leader>cr :CocRestart
 endfun
 
 fun! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:save)
 endfun
 
 autocmd BufWritePre * :call TrimWhitespace()
-autocmd FileType typescript :call GoYCM()
+autocmd FileType typescript,javascript :call GoYCM()
 autocmd FileType cpp,cxx,h,hpp,c :call GoCoc()
+autocmd FileType php :call GoPHP()

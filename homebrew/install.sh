@@ -167,6 +167,9 @@ brew link vim
 #brew install ripgrep
 brew install ripgrep
 
+#brew install ctags
+brew install ctags
+
 # Remove outdated versions from the cellar.
 brew cleanup
 

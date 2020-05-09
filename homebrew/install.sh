@@ -160,8 +160,7 @@ brew cask install google-chrome
 #brew install cmake
 brew install cmake
 
-#brew install vim
-brew install vim
+#brew link vim
 brew link vim
 
 #brew install ripgrep

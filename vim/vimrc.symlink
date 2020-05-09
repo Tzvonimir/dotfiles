@@ -67,6 +67,7 @@ set laststatus=2
 set mouse=a
 " Disable error bells
 set noerrorbells
+set belloff=all
 " Don’t reset cursor to start of line when moving around.
 set nostartofline
 " Show the cursor position
@@ -131,11 +132,11 @@ set background=dark
 
 " Allow rg to detect root
 if executable('rg')
-  let g:rg_derive_root='true'
+    let g:rg_derive_root='true'
 endif
 
 " Exclude some files from search
-let g:ctrlp_user_command=['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standart']
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " File tree info
 let g:netrw_browse_split=2
@@ -208,4 +209,4 @@ endfun
 autocmd BufWritePre * :call TrimWhitespace()
 autocmd FileType typescript,javascript :call GoYCM()
 autocmd FileType cpp,cxx,h,hpp,c :call GoCoc()
-autocmd FileType php :call GoPHP()
+autocmd FileType php,vue :call GoPHP()

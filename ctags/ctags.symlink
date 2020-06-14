@@ -1,0 +1,53 @@
+--langdef=clojure
+--langmap=clojure:.clj.cljs.cljx
+--regex-clojure=/\(fact[ \t]+\"([^\"]+)\"/\1/,fact/
+--regex-clojure=/\(create-ns[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/n,namespace/
+--regex-clojure=/\(def[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/d,definition/
+--regex-clojure=/\(defn[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/f,function/
+--regex-clojure=/\(defn-[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/p,private function/
+--regex-clojure=/\(defmacro[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/m,macro/
+--regex-clojure=/\(defroutes[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/r,routes/
+--regex-clojure=/\(defresource[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/o,resource/
+--regex-clojure=/\(definline[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/i,inline/
+--regex-clojure=/\(defmulti[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/a,multimethod definition/
+--regex-clojure=/\(defmethod[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/b,multimethod instance/
+--regex-clojure=/\(defonce[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/c,definition (once)/
+--regex-clojure=/\(defstruct[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/s,struct/
+--regex-clojure=/\(defstate[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/t,state/
+--regex-clojure=/\(defrecord[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/e,record/
+--regex-clojure=/\(defprotocol[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/e,protocol/
+--regex-clojure=/\(intern[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/v,intern/
+--regex-clojure=/\(ns[ \t]+([-[:alnum:]*+!_:\/.?]+)/\1/n,namespace/
+
+--exclude=*.min.js
+--exclude=*.min.worker.js
+--exclude=*.sql
+--exclude=*.java
+--exclude=*.groovy
+--exclude=.eslintrc.*
+--exclude=externs.*
+--exclude=target
+--exclude=dist
+--exclude=node_modules
+--exclude=bower_components
+--exclude=build
+--exclude=out
+--exclude=vendors
+
+--langdef=less
+--langmap=less:.less
+--regex-less=/^[ t]*.([A-Za-z0-9_-]+)/1/c,class,classes/
+--regex-less=/^[ t]*#([A-Za-z0-9_-]+)/1/i,id,ids/
+--regex-less=/^[ t]*(([A-Za-z0-9_-]+[ tn,]+)+){/1/t,tag,tags/
+--regex-less=/^[ t]*@medias+([A-Za-z0-9_-]+)/1/m,media,medias/
+
+--langdef=js
+--langmap=js:.js.vue
+--regex-js=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*\{/\5/,object/
+--regex-js=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*(=|:)[ \t]*function[ \t]*\(/\5/,function/
+--regex-js=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*\[/\5/,array/
+--regex-js=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*[^"]'[^']*/\5/,string/
+--regex-js=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*(true|false)/\5/,boolean/
+--regex-js=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*[0-9]+/\5/,number/
+--regex-js=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*.+([,;=]|$)/\5/,variable/
+--regex-js=/(gulp\.task)/\1/,task/

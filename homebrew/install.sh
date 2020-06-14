@@ -52,13 +52,13 @@ if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
 fi;
 
 # Install `wget` with IRI support.
-brew install wget --with-iri
+brew install wget
 
 # Install GnuPG to enable PGP-signing commits.
 brew install gnupg
 
 # Install more recent versions of some macOS tools.
-brew install vim --with-override-system-vi
+brew install vim
 brew install grep
 brew install openssh
 brew install screen
@@ -104,7 +104,7 @@ brew install ack
 brew install git
 brew install git-lfs
 brew install gs
-brew install imagemagick --with-webp
+brew install imagemagick
 brew install lua
 brew install lynx
 brew install p7zip
@@ -134,7 +134,7 @@ brew cask install sequel-pro
 
 #brew install pgadmin
 brew install postgresql
-brew install pgadmin4
+brew cask install pgadmin4
 
 #brew install docker
 brew install docker
@@ -168,6 +168,9 @@ brew install ripgrep
 
 #brew install ctags
 brew install ctags
+
+#brew install tmux
+brew install tmux
 
 # Remove outdated versions from the cellar.
 brew cleanup

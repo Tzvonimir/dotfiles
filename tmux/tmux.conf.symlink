@@ -5,6 +5,14 @@ bind Space send-prefix
 
 # Use vi keys
 set -gw mode-keys vi
+set -g status-keys vi
+
+# Basic config
+set -g history-limit 10000
+setw -g monitor-activity on
+
+# Enable mouse in tmux
+set -g mouse on
 
 # Update window title
 set -g set-titles on
@@ -13,8 +21,6 @@ set -g set-titles-string '#T - #I:#W'
 # Update color scheme
 set -g default-terminal "screen-256color"
 
-# Enable mouse in tmux
-set -g mouse on
 # Start window numbers from 1
 set -g base-index 1
 
@@ -23,6 +29,16 @@ bind v split-window -h
 
 # Split panes vertically
 bind n split-window -v
+
+# Resize
+bind-key J resize-pane -D 5
+bind-key K resize-pane -U 5
+bind-key H resize-pane -L 5
+bind-key L resize-pane -R 5
+
+# Window
+bind-key p previous-window
+bind-key b next-window
 
 # Smart pane switching with awareness of Vim splits.
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' \

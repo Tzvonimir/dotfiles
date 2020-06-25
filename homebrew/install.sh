@@ -173,6 +173,15 @@ brew install ctags
 #brew install tmux
 brew install tmux
 
+#brew install grammarly
+brew cask install grammarly
+
+#brew install nextcloud
+brew install nextcloud
+
+#brew cask install lastpass
+brew cask install lastpass
+
 # Remove outdated versions from the cellar.
 brew cleanup
 

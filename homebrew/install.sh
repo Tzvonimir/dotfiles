@@ -59,6 +59,7 @@ brew install gnupg
 
 # Install more recent versions of some macOS tools.
 brew install vim
+brew install neovim
 brew install grep
 brew install openssh
 brew install screen
@@ -74,6 +75,7 @@ brew install woff2
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 brew install python
+brew install python3.7
 brew install aircrack-ng
 brew install bfg
 brew install binutils

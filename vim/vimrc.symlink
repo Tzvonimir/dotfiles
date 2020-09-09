@@ -180,6 +180,7 @@ nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
 
 " Remaps
+nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gc :GBranches<CR>
 nnoremap <leader>ga :Git fetch --all<CR>
 nnoremap <leader>grum :Git rebase upstream/master<CR>

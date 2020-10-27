@@ -238,7 +238,7 @@ fun! GoPHP()
   nnoremap <leader>gdn :wincmd ]<CR>
   nnoremap <leader>gr <C-T><CR>
 
-  autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
+  "autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
 
   " Make tabs as wide as four spaces
   set tabstop=4 softtabstop=4

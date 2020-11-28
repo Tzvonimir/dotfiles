@@ -13,6 +13,8 @@ set ideamarks
 set ideajoin
 set commentary
 set surround
+set visualbell
+set noerrorbells
 
 " Set leader
 let mapleader=" "

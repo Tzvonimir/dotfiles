@@ -189,7 +189,14 @@ brew cask install lastpass
 #install fuzzy search for zsh
 brew install fzf
 
+# install bat
+brew install bat
+
+#install cheat: https://github.com/cheat/cheat
+brew install cheat
+
 # Remove outdated versions from the cellar.
 brew cleanup
+
 
 exit 0

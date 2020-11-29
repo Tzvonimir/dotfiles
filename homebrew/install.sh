@@ -186,6 +186,9 @@ brew install nextcloud
 #brew cask install lastpass
 brew cask install lastpass
 
+#install fuzzy search for zsh
+brew install fzf
+
 # Remove outdated versions from the cellar.
 brew cleanup
 

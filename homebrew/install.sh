@@ -195,6 +195,9 @@ brew install bat
 #install cheat: https://github.com/cheat/cheat
 brew install cheat
 
+# install rbenv: https://github.com/rbenv/rbenv
+brew install rbenv
+
 # Remove outdated versions from the cellar.
 brew cleanup
 

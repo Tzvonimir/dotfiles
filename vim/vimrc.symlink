@@ -202,6 +202,8 @@ nnoremap <leader>pc :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>pv <bar> :Lex <bar> :vertical resize 30<CR>
 nnoremap <leader>v :wincmd v<CR>
 nnoremap <leader>n :wincmd n<CR>
+nnoremap <leader>vt :wincmd v <bar> :terminal<CR>
+nnoremap <leader>nt :wincmd n <bar> :terminal<CR>
 nnoremap <leader>ps :Rg<SPACE>
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bp :bp<CR>
@@ -247,6 +249,9 @@ onoremap an" :<c-u>normal! f"va"<cr>
 onoremap ap" :<c-u>normal! F"va"<cr>
 onoremap in" :<c-u>normal! f"vi"<cr>
 onoremap il" :<c-u>normal! F"vi"<cr>
+
+" Terminal rempas
+tnoremap <Esc> <C-\><C-n>
 
 " Functions
 " Not using YMC anymore

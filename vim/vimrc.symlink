@@ -5,9 +5,7 @@ filetype plugin on
 set clipboard=unnamed
 " Enhance command-line completion
 set wildmenu
-" Allow cursor keys in insert mode
-" set esckeys
-" Allow backspace in insert mode
+" Allow cursor keys and backspace in insert mode
 set backspace=indent,eol,start
 " Optimize for fast terminal connections
 set ttyfast
@@ -16,7 +14,7 @@ set gdefault
 " Use UTF-8 without BOM
 set encoding=utf-8 nobomb
 " Change mapleader
-let mapleader=","
+let mapleader=" "
 " Don’t add empty newlines at the end of files
 set binary
 set noeol
@@ -47,6 +45,8 @@ set cursorline
 set tabstop=2 softtabstop=2
 set shiftwidth=2
 set expandtab
+" Do not redraw screen while executing macro
+set lazyredraw
 " Smart indent
 set smartindent
 " Smart casing for searches
@@ -85,8 +85,6 @@ set showcmd
 set scrolloff=3
 " Enable window modify
 set modifiable
-" Set leader
-let mapleader=" "
 " Tags - look in in index file
 set tags=tags
 
@@ -141,7 +139,6 @@ Plug 'stephpy/vim-php-cs-fixer'
 " Tmux plugin
 Plug 'christoomey/vim-tmux-navigator'
 
-
 call plug#end()
 
 " Set colorscheme
@@ -192,11 +189,14 @@ noremap <leader>ss :call TrimWhitespace()<CR>
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <Leader>pf :Files<CR>
-
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>wh <C-w>H
+nnoremap <leader>wj <C-w>J
+nnoremap <leader>wk <C-w>K
+nnoremap <leader>wl <C-w>L
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pc :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <leader>pv <bar> :Lex <bar> :vertical resize 30<CR>
@@ -207,8 +207,46 @@ nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bp :bp<CR>
 nnoremap <silent> <Leader>= :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
+nnoremap go o<Esc>
+nnoremap gO O<Esc>j
+nnoremap Y y$
+
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+inoremap <c-{> <Esc>
+
+" Operator remaps
+
+" [ Remaps
+onoremap an[ :<c-u>normal! f[va[<cr>
+onoremap ap[ :<c-u>normal! F[va[<cr>
+onoremap in[ :<c-u>normal! f[vi[<cr>
+onoremap il[ :<c-u>normal! F[vi[<cr>
+
+" { Remaps
+onoremap an{ :<c-u>normal! f{va{<cr>
+onoremap ap{ :<c-u>normal! F{va{<cr>
+onoremap in{ :<c-u>normal! f{vi{<cr>
+onoremap il{ :<c-u>normal! F{vi{<cr>
+
+" ( Remaps
+onoremap an( :<c-u>normal! f(va(<cr>
+onoremap ap( :<c-u>normal! F(va(<cr>
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap il( :<c-u>normal! F(vi(<cr>
+
+" ' Remaps
+onoremap an' :<c-u>normal! f'va'<cr>
+onoremap ap' :<c-u>normal! F'va'<cr>
+onoremap in' :<c-u>normal! f'vi'<cr>
+onoremap il' :<c-u>normal! F'vi'<cr>
+
+" '' Remaps
+onoremap an" :<c-u>normal! f"va"<cr>
+onoremap ap" :<c-u>normal! F"va"<cr>
+onoremap in" :<c-u>normal! f"vi"<cr>
+onoremap il" :<c-u>normal! F"vi"<cr>
 
 " Functions
 " Not using YMC anymore
@@ -267,7 +305,7 @@ fun! GoGolang()
 endfun
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
+  let col = col(".') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 

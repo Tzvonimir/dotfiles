@@ -8,6 +8,9 @@ fi
 # shortcut to this dotfiles path is $DOT
 export DOT=$HOME/.dotfiles
 
+# shortcut to my project vimrc
+export MYVIMRC=$DOT/vim/vimrc.symlink
+
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Projects
 

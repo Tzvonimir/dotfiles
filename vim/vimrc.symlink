@@ -139,6 +139,10 @@ Plug 'stephpy/vim-php-cs-fixer'
 " Tmux plugin
 Plug 'christoomey/vim-tmux-navigator'
 
+" Nerd tree
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 call plug#end()
 
 " Set colorscheme
@@ -199,7 +203,8 @@ nnoremap <leader>wk <C-w>K
 nnoremap <leader>wl <C-w>L
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>pc :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-nnoremap <leader>pv <bar> :Lex <bar> :vertical resize 30<CR>
+nnoremap <leader>pV <bar> :Lex <bar> :vertical resize 30<CR>
+nnoremap <leader>pv <bar> :NERDTree <bar> :vertical resize 30<CR>
 nnoremap <leader>v :wincmd v<CR>
 nnoremap <leader>n :wincmd n<CR>
 nnoremap <leader>vt :wincmd v <bar> :terminal<CR>
@@ -252,6 +257,23 @@ onoremap il" :<c-u>normal! F"vi"<cr>
 
 " Terminal rempas
 tnoremap <Esc> <C-\><C-n>
+
+" NERDTree remaps
+let NERDTreeShowHidden=1
+let NERDTreeShowLineNumbers=1
+let g:NERDTreeGitStatusWithFlags = 1
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "m",
+    \ "Staged"    : "s",
+    \ "Untracked" : "u",
+    \ "Renamed"   : "r",
+    \ "Unmerged"  : "u",
+    \ "Deleted"   : "d",
+    \ "Dirty"     : "m",
+    \ "Clean"     : "c",
+    \ 'Ignored'   : 'i',
+    \ "Unknown"   : "?"
+    \ }
 
 " Functions
 " Not using YMC anymore

@@ -229,6 +229,12 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 inoremap <c-{> <Esc>
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " Operator remaps
 
@@ -304,13 +310,43 @@ fun! GoCoc()
 endfun
 
 fun! GoPHP()
+  if executable('intelephense')
+    augroup LspPHPIntelephense
+      au!
+      au User lsp_setup call lsp#register_server({
+            \ 'name': 'intelephense',
+            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'intelephense --stdio']},
+            \ 'whitelist': ['php'],
+            \ 'initialization_options': {'storagePath': '/tmp/intelephense'},
+            \ 'workspace_config': {
+            \   'intelephense': {
+            \     'files': {
+            \       'maxSize': 1000000,
+            \       'associations': ['*.php', '*.phtml'],
+            \       'exclude': [],
+            \     },
+            \     'completion': {
+            \       'insertUseDeclaration': v:true,
+            \       'fullyQualifyGlobalConstantsAndFunctions': v:false,
+            \       'triggerParameterHints': v:true,
+            \       'maxItems': 100,
+            \     },
+            \     'format': {
+            \       'enable': v:true
+            \     },
+            \   },
+            \ }
+            \})
+    augroup END
+  endif
+  :call GoCoc()
   nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
   nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
-  nnoremap <leader>gd <C-]><CR>
-  nnoremap <leader>gdn :wincmd ]<CR>
-  nnoremap <leader>gr <C-T><CR>
+  " nnoremap <leader>gd <C-]><CR>
+  " nnoremap <leader>gdn :wincmd ]<CR>
+  " nnoremap <leader>gr <C-T><CR>
 
-  "autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
+  autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
 
   " Make tabs as wide as four spaces
   set tabstop=4 softtabstop=4

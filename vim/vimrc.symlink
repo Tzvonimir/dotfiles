@@ -131,7 +131,6 @@ Plug 'stsewd/fzf-checkout.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'mbbill/undotree'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'sheerun/vim-polyglot'
 
 " PHP specific plugins
 Plug 'stephpy/vim-php-cs-fixer'
@@ -143,7 +142,15 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+" Vim go plugin
+Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
+
+Plug 'sheerun/vim-polyglot'
+
 call plug#end()
+
+" Disable vim go mappings
+let g:go_def_mapping_enabled = 0
 
 " Set colorscheme
 colorscheme gruvbox
@@ -262,7 +269,7 @@ tnoremap <Esc> <C-\><C-n>
 let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
 let g:NERDTreeGitStatusWithFlags = 1
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "m",
     \ "Staged"    : "s",
     \ "Untracked" : "u",

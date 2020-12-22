@@ -230,11 +230,8 @@ vnoremap K :m '<-2<CR>gv=gv
 
 inoremap <c-{> <Esc>
 " Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Operator remaps
 
@@ -346,7 +343,7 @@ fun! GoPHP()
   " nnoremap <leader>gdn :wincmd ]<CR>
   " nnoremap <leader>gr <C-T><CR>
 
-  autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
+  " autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
 
   " Make tabs as wide as four spaces
   set tabstop=4 softtabstop=4

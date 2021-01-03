@@ -89,7 +89,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'gruvbox-community/gruvbox'
 Plug 'jremmen/vim-ripgrep'
 Plug 'tpope/vim-fugitive'
-Plug 'tweekmonster/gofmt.vim'
+"Plug 'tweekmonster/gofmt.vim'
 Plug 'vim-utils/vim-man'
 Plug 'lyuts/vim-rtags'
 "Plug 'kien/ctrlp.vim'
@@ -336,6 +336,8 @@ fun! GoGolang()
   let g:go_highlight_format_strings = 1
   let g:go_highlight_variable_declarations = 1
   let g:go_auto_sameids = 1
+
+  nnoremap <leader>fs :GoFillStruct<CR>
 
 endfun
 

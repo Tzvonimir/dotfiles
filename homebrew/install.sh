@@ -74,6 +74,7 @@ brew install sfnt2woff-zopfli
 brew install woff2
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
+brew install pyenv
 brew install python
 brew install python3.7
 brew install aircrack-ng
@@ -186,6 +187,22 @@ brew install nextcloud
 #brew cask install lastpass
 brew cask install lastpass
 
+#Install vagrant
+brew cask install virtualbox
+brew cask install vagrant
+brew cask install vagrant-manager
+
+#Install minikube
+brew install minikube
+
+#Install helm
+brew install helm
+brew install kubernates-helm
+brew install kubernates-cli
+
+#Install watch
+brew install watch
+
 #install fuzzy search for zsh
 brew install fzf
 
@@ -197,6 +214,9 @@ brew install cheat
 
 # install rbenv: https://github.com/rbenv/rbenv
 brew install rbenv
+
+# install terraform
+brew install terraform
 
 # Remove outdated versions from the cellar.
 brew cleanup

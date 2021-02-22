@@ -71,3 +71,5 @@ plugins=(zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"

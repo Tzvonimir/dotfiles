@@ -1,0 +1,37 @@
+# Start consul agent:
+consul agent -dev
+
+# Get all members of consul:
+consul members
+
+# Get all nodes through HTTP API:
+curl localhost:8500/v1/catalog/nodes
+
+# Stop the agent
+consul leave
+
+# Create config dir
+mkdir ./consul.d
+
+# Echo basic web config
+echo '{
+  "service": {
+    "name": "web",
+    "tags": [
+      "rails"
+    ],
+    "port": 80
+  }
+}' > ./consul.d/web.json
+
+# Dig service
+ dig @127.0.0.1 -p 8600 <service_name>.service.consul
+
+# Curl service
+curl http://localhost:8500/v1/catalog/service/<service>
+
+# Curl service -> check status
+curl 'http://localhost:8500/v1/health/service/<service_name>?passing'
+
+# Reload consul configuration
+consul reload

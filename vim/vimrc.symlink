@@ -116,6 +116,9 @@ Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
 
 Plug 'sheerun/vim-polyglot'
 
+" Terraform plugin
+Plug 'hashivim/vim-terraform'
+
 call plug#end()
 
 " Disable vim go mappings
@@ -358,4 +361,5 @@ autocmd FileType typescript,javascript :call GoCoc()
 autocmd FileType cpp,cxx,h,hpp,c :call GoCoc()
 autocmd FileType php :call GoPHP()
 autocmd FileType vue :call GoCoc()
+autocmd FileType tf :call GoCoc()
 autocmd FileType go :call GoGolang()

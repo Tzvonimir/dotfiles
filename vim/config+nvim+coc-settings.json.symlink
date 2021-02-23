@@ -22,6 +22,15 @@
         "psalm.xml.dist"
       ],
       "requireRootPattern": true
+    },
+    "terraform": {
+      "command": "terraform-lsp",
+      "filetypes": [
+        "terraform",
+        "tf"
+      ],
+      "initializationOptions": {},
+      "settings": {}
     }
   }
 }

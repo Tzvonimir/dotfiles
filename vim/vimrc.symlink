@@ -99,7 +99,7 @@ Plug 'stsewd/fzf-checkout.vim'
 "Plug 'Valloric/YouCompleteMe'
 Plug 'vim-airline/vim-airline'
 Plug 'mbbill/undotree'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 
 " PHP specific plugins
 Plug 'stephpy/vim-php-cs-fixer'
@@ -145,7 +145,7 @@ let g:netrw_winsize=25
 let g:ctrlp_use_caching=0
 
 " Status tracker for ctags
-set statusline+=%{gutentags#statusline()}
+" set statusline+=%{gutentags#statusline()}
 
 " Tmux plugin remaps
 let g:tmux_navigator_no_mappings = 1

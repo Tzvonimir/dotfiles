@@ -1,7 +1,7 @@
 " Settings - Make Vim more useful
 set nocompatible
 filetype plugin on
-set clipboard=unnamed " Use the OS clipboard by default (on versions compiled with `+clipboard`)
+set clipboard=unnamedplus " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set wildmenu " Enhance command-line completion
 set backspace=indent,eol,start " Allow cursor keys and backspace in insert mode
 set ttyfast " Optimize for fast terminal connections

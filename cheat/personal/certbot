@@ -1,0 +1,11 @@
+# Create a new certificate for domain:
+sudo certbot --nginx -d <site_name>
+
+# Delete certificate:
+sudo certbot delete
+
+# Add certbot repository:
+sudo apt install python-certbot-nginx
+
+# Install certbot:
+sudo apt install python-certbot-nginx

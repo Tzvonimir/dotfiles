@@ -1,0 +1,366 @@
+" Settings - Make Vim more useful
+set nocompatible
+filetype plugin on
+set clipboard=unnamedplus " Use the OS clipboard by default (on versions compiled with `+clipboard`)
+set wildmenu " Enhance command-line completion
+set backspace=indent,eol,start " Allow cursor keys and backspace in insert mode
+set ttyfast " Optimize for fast terminal connections
+set gdefault " Add the g flag to search/replace by default
+set encoding=utf-8 nobomb " Use UTF-8 without BOM
+let mapleader=" " " Change mapleader
+" Don’t add empty newlines at the end of files
+set binary
+set noeol
+set timeoutlen=1000 ttimeoutlen=0 " Remove deplay on escape
+" Centralize backups, swapfiles and undo history
+set backupdir=~/.vim/backups
+set directory=~/.vim/swaps
+if exists("&undodir")
+  set undodir=~/.vim/undo
+endif
+set backupskip=/tmp/*,/private/tmp/* " Do not add create backups when editing files in certain directories
+set relativenumber " Set reltive line number
+set number " Enable line numbers
+" Respect modeline in files
+set modeline
+set modelines=2
+" Enable per-directory .vimrc files and disable unsafe commands in them
+set exrc
+set secure
+syntax on " Enable syntax highlighting
+set cursorline " Highlight current line
+" Make tabs as wide as two spaces
+set tabstop=2 softtabstop=2
+set shiftwidth=2
+set expandtab
+set lazyredraw " Do not redraw screen while executing macro
+set smartindent " Smart indent
+set smartcase " Smart casing for searches
+set nowrap " Do not wrap lines
+" Show “invisible” characters
+set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+set list
+set hlsearch " Highlight searches
+set ignorecase " Ignore case of searches
+set incsearch " Highlight dynamically as pattern is typed
+set laststatus=2 " Always show status line
+set mouse=a " Enable mouse in all modes
+" Disable error bells
+set noerrorbells
+set belloff=all
+set nostartofline " Do not add reset cursor to start of line when moving around.
+set ruler " Show the cursor position
+set shortmess=atI " Do not add show the intro message when starting Vim
+set showmode " Show the current mode
+set title " Show the filename in the window titlebar
+set showcmd " Show the (partial) command as it‚Äôs being typed
+set scrolloff=3 " Start scrolling three lines before the horizontal window border
+set modifiable " Enable window modify
+set tags=tags " Tags - look in in index file
+
+" Highlight 80
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+" Automatic commands
+if has("autocmd")
+  " Enable file type detection
+  filetype on
+  " Treat .json files as .js
+  autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+  " Treat .md files as Markdown
+  autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+endif
+
+" Wrap gitcommit file types at the appropriate length
+filetype indent plugin on
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Plugins
+call plug#begin('~/.vim/plugged')
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vimwiki/vimwiki'
+"Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
+Plug 'jremmen/vim-ripgrep'
+Plug 'tpope/vim-fugitive'
+"Plug 'tweekmonster/gofmt.vim'
+Plug 'vim-utils/vim-man'
+Plug 'lyuts/vim-rtags'
+"Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'stsewd/fzf-checkout.vim'
+"Plug 'Valloric/YouCompleteMe'
+Plug 'vim-airline/vim-airline'
+Plug 'mbbill/undotree'
+" Plug 'ludovicchabant/vim-gutentags'
+
+" PHP specific plugins
+Plug 'stephpy/vim-php-cs-fixer'
+
+" Tmux plugin
+Plug 'christoomey/vim-tmux-navigator'
+
+" Nerd tree
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" Vim go plugin
+Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
+
+Plug 'sheerun/vim-polyglot'
+
+" Terraform plugin
+Plug 'hashivim/vim-terraform'
+
+call plug#end()
+
+" Disable vim go mappings
+let g:go_def_mapping_enabled = 0
+
+" Set colorscheme
+colorscheme gruvbox
+set background=dark
+
+" Allow rg to detect root
+if executable('rg')
+    let g:rg_derive_root='true'
+endif
+
+" Exclude some files from search
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" File tree info
+let g:netrw_browse_split=2
+let g:netrw_banner=0
+let g:netrw_winsize=25
+
+" remove ctrlp cache
+let g:ctrlp_use_caching=0
+
+" Status tracker for ctags
+" set statusline+=%{gutentags#statusline()}
+
+" Tmux plugin remaps
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent><c-h> :TmuxNavigateLeft<CR>
+nnoremap <silent><c-j> :TmuxNavigateDown<cr>
+nnoremap <silent><c-k> :TmuxNavigateUp<cr>
+nnoremap <silent><c-l> :TmuxNavigateRight<cr>
+
+" FuGITive
+nmap <leader>gh :diffget //3<CR>
+nmap <leader>gu :diffget //2<CR>
+nmap <leader>gs :G<CR>
+
+" Remaps
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gc :GBranches<CR>
+nnoremap <leader>ga :Git fetch --all<CR>
+nnoremap <leader>grum :Git rebase upstream/master<CR>
+nnoremap <leader>grom :Git rebase origin/master<CR>
+nnoremap <leader>ghw :h <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
+noremap <leader>ss :call TrimWhitespace()<CR>
+noremap <leader>W :w !sudo tee % > /dev/null<CR>
+nnoremap <C-p> :GFiles<CR>
+nnoremap <Leader>pf :Files<CR>
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>wh <C-w>H
+nnoremap <leader>wj <C-w>J
+nnoremap <leader>wk <C-w>K
+nnoremap <leader>wl <C-w>L
+nnoremap <leader>u :UndotreeShow<CR>
+nnoremap <leader>pc :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+nnoremap <leader>pV <bar> :Lex <bar> :vertical resize 30<CR>
+nnoremap <leader>pv <bar> :NERDTree <bar> :vertical resize 30<CR>
+nnoremap <leader>v :wincmd v<CR>
+nnoremap <leader>n :wincmd n<CR>
+nnoremap <leader>vt :wincmd v <bar> :terminal<CR>
+nnoremap <leader>nt :wincmd n <bar> :terminal<CR>
+nnoremap <leader>ps :Rg<SPACE>
+nnoremap <leader>bn :bn<CR>
+nnoremap <leader>bp :bp<CR>
+nnoremap <silent> <Leader>= :vertical resize +5<CR>
+nnoremap <silent> <Leader>- :vertical resize -5<CR>
+nnoremap go o<Esc>
+nnoremap gO O<Esc>j
+nnoremap Y y$
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+inoremap <c-{> <Esc>
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Operator remaps
+
+" [ Remaps
+onoremap an[ :<c-u>normal! f[va[<cr>
+onoremap ap[ :<c-u>normal! F[va[<cr>
+onoremap in[ :<c-u>normal! f[vi[<cr>
+onoremap il[ :<c-u>normal! F[vi[<cr>
+
+" { Remaps
+onoremap an{ :<c-u>normal! f{va{<cr>
+onoremap ap{ :<c-u>normal! F{va{<cr>
+onoremap in{ :<c-u>normal! f{vi{<cr>
+onoremap il{ :<c-u>normal! F{vi{<cr>
+
+" ( Remaps
+onoremap an( :<c-u>normal! f(va(<cr>
+onoremap ap( :<c-u>normal! F(va(<cr>
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap il( :<c-u>normal! F(vi(<cr>
+
+" ' Remaps
+onoremap an' :<c-u>normal! f'va'<cr>
+onoremap ap' :<c-u>normal! F'va'<cr>
+onoremap in' :<c-u>normal! f'vi'<cr>
+onoremap il' :<c-u>normal! F'vi'<cr>
+
+" '' Remaps
+onoremap an" :<c-u>normal! f"va"<cr>
+onoremap ap" :<c-u>normal! F"va"<cr>
+onoremap in" :<c-u>normal! f"vi"<cr>
+onoremap il" :<c-u>normal! F"vi"<cr>
+
+" Terminal rempas
+tnoremap <Esc> <C-\><C-n>
+
+" NERDTree remaps
+let NERDTreeShowHidden=1
+let NERDTreeShowLineNumbers=1
+let g:NERDTreeGitStatusWithFlags = 1
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+    \ "Modified"  : "m",
+    \ "Staged"    : "s",
+    \ "Untracked" : "u",
+    \ "Renamed"   : "r",
+    \ "Unmerged"  : "u",
+    \ "Deleted"   : "d",
+    \ "Dirty"     : "m",
+    \ "Clean"     : "c",
+    \ 'Ignored'   : 'i',
+    \ "Unknown"   : "?"
+    \ }
+
+" Functions
+fun! GoYCM()
+  nnoremap <buffer> <silent> <leader>gd :YcmCompleter GoTo<CR>
+  nnoremap <buffer> <silent> <leader>gr :YcmCompleter GoToReferences<CR>
+  nnoremap <buffer> <silent> <leader>rr :YcmCompleter RefactorRename<space>
+endfun
+
+fun! GoCoc()
+  nmap <leader>gd <Plug>(coc-definition)
+  nmap <leader>gy <Plug>(coc-type-definition)
+  nmap <leader>gi <Plug>(coc-implementation)
+  nmap <leader>gr <Plug>(coc-references)
+  nmap <leader>rr <Plug>(coc-rename)
+  nmap <leader>g[ <Plug>(coc-diagnostic-prev)
+  nmap <leader>g] <Plug>(coc-diagnostic-next)
+  nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
+  nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
+  nnoremap <leader>cr :CocRestart
+endfun
+
+fun! GoPHP()
+  if executable('intelephense')
+    augroup LspPHPIntelephense
+      au!
+      au User lsp_setup call lsp#register_server({
+            \ 'name': 'intelephense',
+            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'intelephense --stdio']},
+            \ 'whitelist': ['php'],
+            \ 'initialization_options': {'storagePath': '/tmp/intelephense'},
+            \ 'workspace_config': {
+            \   'intelephense': {
+            \     'files': {
+            \       'maxSize': 1000000,
+            \       'associations': ['*.php', '*.phtml'],
+            \       'exclude': [],
+            \     },
+            \     'completion': {
+            \       'insertUseDeclaration': v:true,
+            \       'fullyQualifyGlobalConstantsAndFunctions': v:false,
+            \       'triggerParameterHints': v:true,
+            \       'maxItems': 100,
+            \     },
+            \     'format': {
+            \       'enable': v:true
+            \     },
+            \   },
+            \ }
+            \})
+    augroup END
+  endif
+  :call GoCoc()
+  nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
+  nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
+  " nnoremap <leader>gd <C-]><CR>
+  " nnoremap <leader>gdn :wincmd ]<CR>
+  " nnoremap <leader>gr <C-T><CR>
+
+  " autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
+
+  " Make tabs as wide as four spaces
+  set tabstop=4 softtabstop=4
+  set shiftwidth=4
+  set expandtab
+endfun
+
+fun! GoGolang()
+  :call GoCoc()
+
+  let g:go_highlight_build_constraints = 1
+  let g:go_highlight_extra_types = 1
+  let g:go_highlight_fields = 1
+  let g:go_highlight_functions = 1
+  let g:go_highlight_methods = 1
+  let g:go_highlight_operators = 1
+  let g:go_highlight_structs = 1
+  let g:go_highlight_types = 1
+  let g:go_highlight_function_parameters = 1
+  let g:go_highlight_function_calls = 1
+  let g:go_highlight_generate_tags = 1
+  let g:go_highlight_format_strings = 1
+  let g:go_highlight_variable_declarations = 1
+  let g:go_auto_sameids = 1
+
+  nnoremap <leader>fs :GoFillStruct<CR>
+
+endfun
+
+function! s:check_back_space() abort
+  let col = col(".') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+fun! TrimWhitespace()
+  let l:save = winsaveview()
+  keeppatterns %s/\s\+$//e
+  call winrestview(l:save)
+endfun
+
+" Autocmd remaps
+autocmd BufWritePre * :call TrimWhitespace()
+autocmd FileType typescript,javascript :call GoCoc()
+autocmd FileType cpp,cxx,h,hpp,c :call GoCoc()
+autocmd FileType php :call GoPHP()
+autocmd FileType vue :call GoCoc()
+autocmd FileType tf :call GoCoc()
+autocmd FileType go :call GoGolang()

@@ -1,0 +1,6 @@
+alias d='docker $*'
+alias d-c='docker-compose $*'
+alias d-ps='docker ps -a'
+alias d-stop='docker stop $(docker ps -qa)'
+alias d-rm='docker rm $(docker ps -qa)'
+alias d-start-dev='docker-compose -f docker-compose.yml -f docker-compose.development.yml up'

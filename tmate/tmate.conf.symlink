@@ -1,0 +1,2 @@
+# copy tmux config for tmate use
+source-file ~/.tmux.conf

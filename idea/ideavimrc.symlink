@@ -1,0 +1,60 @@
+" Make Vim more useful
+set nocompatible
+filetype plugin on
+
+set binary
+set noeol
+set relativenumber
+set number
+set set highlightedyank
+set ruler
+set modifiable
+set ideamarks
+set ideajoin
+set commentary
+set surround
+set visualbell
+set noerrorbells
+
+" Set leader
+let mapleader=" "
+
+" Search actions
+nnoremap <C-P> :action SearchEverywhere<CR>
+nnoremap <leader>gd :action GotoDeclaration<CR>
+nnoremap <leader>gs :action GotoSuperMethod<CR>
+nnoremap <leader>gi :action GotoImplementation<CR>
+nnoremap <leader>gb :action JumpToLastChange<CR>
+nnoremap <leader>ps :action FindInPath<CR>
+map <leader>f :action FindUsages<CR>
+nnoremap <leader>ga :action GotoAction<CR>
+vnoremap <leader>ga :action GotoAction<CR>
+
+" Refactor code
+nnoremap <leader>= :action ReformatCode<CR>
+vnoremap <leader>= :action ReformatCode<CR>
+
+" To navigate between split panes
+nmap <leader>l :action NextSplitter<cr>
+nmap <leader>h :action PrevSplitter<cr>
+
+" Splits manipulation
+nmap <leader>n :action SplitHorizontally<cr>
+nmap <leader>v :action SplitVertically<cr>
+nmap <leader>vq :action Unsplit<cr>
+nmap <leader>vQ :action UnsplitAll<cr>
+nmap <leader>ve :action OpenEditorInOppositeTabGroup<cr>
+
+" Moving lines
+nmap J :action MoveLineUp<cr>
+nmap K :action MoveLineDown<cr>
+
+" Building, Running and Debugging
+nmap <leader>bc :action CompileDirty<cr>
+nmap <leader>br :action Run<cr>
+nmap <leader>bR :action RunAnything<cr>
+nmap <leader>bd :action Debug<cr>
+nmap <leader>bcc :action RunClass<cr>
+nmap <leader>bcd :action DebugClass<cr>
+nmap <leader>bt :action RerunTests<cr>
+nmap <leader>bT :action RerunFailedTests<cr>

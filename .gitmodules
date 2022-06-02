@@ -1,0 +1,9 @@
+[submodule "cheat/community"]
+	path = cheat/community
+	url = https://github.com/cheat/cheatsheets
+[submodule "cheat/cheatsheets"]
+	path = cheat/cheatsheets
+	url = git@github.com:cheat/cheatsheets.git
+[submodule "ubersicht/simple-bar"]
+	path = ubersicht/simple-bar
+	url = git@github.com:Jean-Tinland/simple-bar.git

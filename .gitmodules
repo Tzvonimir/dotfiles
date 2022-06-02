@@ -7,3 +7,6 @@
 [submodule "ubersicht/simple-bar"]
 	path = ubersicht/simple-bar
 	url = git@github.com:Jean-Tinland/simple-bar.git
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = git@github.com:tmux-plugins/tpm.git

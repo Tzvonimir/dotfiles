@@ -145,6 +145,9 @@ brew install --cask ubersicht
 brew install pre-commit
 brew install jq
 
+# Node
+brew install node
+
 # Dotnet
 brew install --cask dotnet-sdk
 

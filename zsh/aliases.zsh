@@ -2,7 +2,7 @@ alias reload!='. ~/.zshrc'
 
 alias cls='clear' # Good 'ol Clear Screen command
 
-alias vim='/usr/local/bin/nvim'
+alias vim='/opt/homebrew/bin/nvim'
 
 alias python='/usr/local/bin/python3'
 

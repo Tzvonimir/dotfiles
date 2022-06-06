@@ -144,6 +144,12 @@ brew install --cask figma
 brew install --cask ubersicht
 brew install pre-commit
 brew install jq
+brew install tailscale
+brew install --cask firefox
+brew install awscli
+
+# Management
+brew install --cask slack
 
 # Node
 brew install node

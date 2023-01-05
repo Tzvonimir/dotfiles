@@ -35,7 +35,7 @@ cheatpaths:
   # Note that the paths and tags listed below are just examples. You may freely
   # change them to suit your needs.
   - name: community
-    path: ~/.dotfiles/cheat/community
+    path: ~/.dotfiles/cheat/cheatsheets
     tags: [ community ]
     readonly: true
 

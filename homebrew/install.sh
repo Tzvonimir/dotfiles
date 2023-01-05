@@ -135,6 +135,7 @@ brew install ripgrep
 brew install ctags
 brew install ansible
 brew install tmux
+brew install tmate
 brew install watch
 brew install fzf
 brew install bat
@@ -147,12 +148,20 @@ brew install jq
 brew install tailscale
 brew install --cask firefox
 brew install awscli
+brew install --cask flutter
+brew install go
+brew install revive
+brew install staticcheck
+brew install bufbuild/buf/buf
+brew install git-lfs
+brew install firebase-cli
 
 # Management
 brew install --cask slack
 
 # Node
 brew install node
+brew install angular-cli
 
 # Dotnet
 brew install --cask dotnet-sdk
@@ -179,8 +188,13 @@ brew install docker-machine
 brew install minikube
 
 brew install helm
+brew install k9s
 brew install kubernates-helm
+brew install derailed/popeye/popeye
 brew install eksctl
+
+brew tap blendle/blendle
+brew install kns
 
 brew install --cask lens
 

@@ -1,6 +1,14 @@
 # Local/private config goes in the include
+[user]
+        name = Zvonimir Tomesic
+        email = zvonimir.tomesic@sintezis.co
+
 [include]
         path = ~/.gitconfig.local
+[includeIf "gitdir:/Users/zvonimirtomesic/Projects/Sintezis/Elude/Github/"]
+        path = ~/.gitconfig.elude
+[includeIf "gitdir:/Users/zvonimirtomesic/Projects/Sintezis/"]
+        path = ~/.gitconfig.sintezis
 [hub]
         protocol = https
 [alias]
@@ -17,8 +25,8 @@
 [core]
         excludesfile = ~/.gitignore
         editor = vim
-	autocrlf = input
-	eol = lf
+        autocrlf = input
+        eol = lf
 [apply]
         whitespace = nowarn
 [mergetool]
@@ -34,9 +42,11 @@
         # Setting to git 2.0 default to suppress warning message
         default = simple
 [credential]
-	helper = store
-[user]
-	name = Zvonimir Tomesic
-	email = zvonimir.tomesic@sintezis.co
+        helper = store
 [pull]
-	rebase = true
+        rebase = true
+[filter "lfs"]
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+        required = true
+        clean = git-lfs clean -- %f

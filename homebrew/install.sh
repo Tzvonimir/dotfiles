@@ -123,6 +123,7 @@ brew install zopfli
 # Install java binaries.
 brew tap homebrew/cask-versions
 # brew tap adoptopenjdk/openjdk
+brew install --cask adoptopenjdk
 brew install --cask adoptopenjdk8
 brew install --cask adoptopenjdk11
 brew install jenv
@@ -155,6 +156,7 @@ brew install staticcheck
 brew install bufbuild/buf/buf
 brew install git-lfs
 brew install firebase-cli
+brew install clang-format
 
 # Management
 brew install --cask slack

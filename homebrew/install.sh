@@ -157,6 +157,7 @@ brew install bufbuild/buf/buf
 brew install git-lfs
 brew install firebase-cli
 brew install clang-format
+brew install android-platform-tools
 
 # Management
 brew install --cask slack

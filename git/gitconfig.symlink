@@ -9,6 +9,8 @@
         path = ~/.gitconfig.elude
 [includeIf "gitdir:/Users/zvonimirtomesic/Projects/Sintezis/"]
         path = ~/.gitconfig.sintezis
+[includeIf "gitdir:/Users/zvonimirtomesic/Projects/Codilas/"]
+        path = ~/.gitconfig.codilas
 [hub]
         protocol = https
 [alias]

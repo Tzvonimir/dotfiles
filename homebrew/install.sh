@@ -195,6 +195,7 @@ brew install k9s
 brew install kubernates-helm
 brew install derailed/popeye/popeye
 brew install eksctl
+brew install argocd
 
 brew tap blendle/blendle
 brew install kns

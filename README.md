@@ -6,9 +6,7 @@ files in there. Anything with an extension of `.zsh` will get automatically
 included into your shell. Anything with an extension of `.symlink` will get
 symlinked without extension into `$HOME` when you run `script/bootstrap`.
 
-## inspiration
-
-Initial repo was inspired by:
+## inspiration Initial repo was inspired by:
 
 * https://github.com/holman/dotfiles
 * https://github.com/issmirnov/dotfiles
@@ -37,8 +35,7 @@ There's a few special files in the hierarchy.
   your `$HOME`. This is so you can keep all of those versioned in your dotfiles
   but still keep those autoloaded files in your home directory.
   To further nest symlinks into subdirectories under `$HOME`, use `+` signs to
-  signify additional directory delimiters. So for example, the file `topic/config+topic.symlink`
-  would get symlinked to `$HOME/.config/topic` when you run `script/bootstrap`.
+  signify additional directory delimiters. So for example, the file `topic/config+topic.symlink` would get symlinked to `$HOME/.config/topic` when you run `script/bootstrap`.
 
 ## install
 
